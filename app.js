@@ -51,7 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPosition = 4
     let currentRotation = 0
 
-    let current = theTetrominoes[random][currentRotation]
+    let current = theTetrominoes[random][0]
+
+    // Explanations on how forEach and the current works
+    // current.forEach(function (i) {
+    //     console.log(i)
+    // })
 
     // draw the first rotation in the first tetromino
     function draw() {
@@ -87,7 +92,7 @@ document.addEventListener('keyup', control)
     // move down function
     function moveDown() {
         undraw()
-        currentPosition += width
+        currentPosition += width // same as currentPosition = currentPosition + width
         draw()
         freeze()
     }
