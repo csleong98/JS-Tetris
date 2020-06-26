@@ -215,7 +215,7 @@ document.addEventListener('keyup', control)
                     squares[index].classList.remove('taken')
                     squares[index].classList.remove('tetromino')
                 })
-                const squaresRemoved = squares.splice(i, width)
+                squaresRemoved = squares.splice(i, width)
                 squares = squaresRemoved.concat(squares)
                 squares.forEach(cell => grid.appendChild(cell))
             }
