@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // types of variable const, let, var
     const grid = document.querySelector('.grid')
+
+    function createDiv() {
+
+        for (i = 0; i < 200; i++) {
+            var div = document.createElement('DIV')
+            grid.appendChild(div)
+        }
+
+        for (i = 0; i < 11; i++) {
+            var invdiv = document.createElement('DIV')
+            invdiv.setAttribute('class', 'taken')
+            grid.appendChild(invdiv)
+        }
+    }
+    createDiv()
     let squares = Array.from(document.querySelectorAll('.grid div'))
     const width = 10
     const scoreDisplay = document.querySelector('#score')
@@ -68,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // make the tetromino move down every 0.5 seconds
-    timerID = setInterval(moveDown, 500)
+    // timerID = setInterval(moveDown, 500)
 
     // assign functions to KeyCodes
     function control(e) {
@@ -166,6 +181,7 @@ document.addEventListener('keyup', control)
 
     //display the shape in the mini-grid display
     function displayShape() {
+        // remove any tetromino from this grid
         displaySquares.forEach(square => {
             square.classList.remove('tetromino')
         })
