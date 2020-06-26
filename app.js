@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // types of variable const, let, var
     const grid = document.querySelector('.grid')
     let squares = Array.from(document.querySelectorAll('.grid div'))
     const width = 10
@@ -53,11 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let current = theTetrominoes[random][0]
 
-    // Explanations on how forEach and the current works
-    // current.forEach(function (i) {
-    //     console.log(i)
-    // })
-
     // draw the first rotation in the first tetromino
     function draw() {
         current.forEach(index => {
@@ -71,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    // make the tetromino move down every 1 second
-    // timerID = setInterval(moveDown, 500)
+    // make the tetromino move down every 0.5 seconds
+    timerID = setInterval(moveDown, 500)
 
     // assign functions to KeyCodes
     function control(e) {
@@ -103,7 +99,7 @@ document.addEventListener('keyup', control)
             current.forEach(index => squares[currentPosition + index].classList.add('taken'))
             // start a new tetromino falling
             random = nextRandom
-            nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+            nextRandom = Math.floor(Math.random() * theTetrominoes.length) // this nextRandom will contribute to display Next Random
             current = theTetrominoes[random][currentRotation]
             currentPosition = 4
             draw()
@@ -191,7 +187,7 @@ document.addEventListener('keyup', control)
         }
     })
 
-    // add score
+    // add score, removed whole row, move the next row to the bottom
     function addScore() {
         for (let i=0; i < 199; i +=width) {
             const row  = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
@@ -201,7 +197,7 @@ document.addEventListener('keyup', control)
                 scoreDisplay.innerHTML = score
                 row.forEach(index => {
                     squares[index].classList.remove('taken')
-                    squares[index].classList.remove('tetromino') 
+                    squares[index].classList.remove('tetromino')
                 })
                 const squaresRemoved = squares.splice(i, width)
                 squares = squaresRemoved.concat(squares)
