@@ -215,9 +215,10 @@ document.addEventListener('keyup', control)
                     squares[index].classList.remove('taken')
                     squares[index].classList.remove('tetromino')
                 })
-                squaresRemoved = squares.splice(i, width)
-                squares = squaresRemoved.concat(squares)
-                squares.forEach(cell => grid.appendChild(cell))
+
+                squaresRemoved = squares.splice(i, width) //remove the squares through index
+                squares = squaresRemoved.concat(squares)  //add the removed squares back to the front of the squares
+                squares.forEach(cell => grid.appendChild(cell)) // reset the grid
             }
         }
     }
